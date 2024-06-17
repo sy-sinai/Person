@@ -40,7 +40,7 @@ public class PersonRepository
                 throw new Exception("Valid name required");
 
             // TODO: Insert the new person into the database
-            result = 0;
+            result = conn.Insert(new Person { Name = name });
 
             StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
         }
@@ -58,6 +58,7 @@ public class PersonRepository
         {
             Init();
             return conn.Table<Person>().ToList();
+
         }
         catch (Exception ex)
         {
